@@ -13,29 +13,31 @@ export const TodayProgress = () => {
   const strokeOffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="bg-surface rounded-lg shadow-card p-6">
+    <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border border-gray-100">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-semibold text-text-primary">Today's Focus</h2>
-        <Calendar className="w-5 h-5 text-text-secondary" />
+        <h2 className="text-xl md:text-2xl font-bold text-gray-900">Today's Focus</h2>
+        <div className="bg-blue-100 p-3 rounded-xl">
+          <Calendar className="w-6 h-6 text-blue-600" />
+        </div>
       </div>
       
       <div className="text-center mb-6">
         <div className="relative inline-flex items-center justify-center">
-          <svg className="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+          <svg className="w-32 h-32 md:w-36 md:h-36 transform -rotate-90" viewBox="0 0 100 100">
             <circle
               cx="50"
               cy="50"
               r={radius}
-              stroke="rgb(229 231 235)"
-              strokeWidth="8"
+              stroke="#e5e7eb"
+              strokeWidth="10"
               fill="none"
             />
             <circle
               cx="50"
               cy="50"
               r={radius}
-              stroke="hsl(170 70% 45%)"
-              strokeWidth="8"
+              stroke="#10b981"
+              strokeWidth="10"
               fill="none"
               strokeLinecap="round"
               strokeDasharray={circumference}
@@ -45,29 +47,27 @@ export const TodayProgress = () => {
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-center">
-              <div className="text-2xl font-bold text-text-primary">
+              <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
                 {Math.round(progress)}%
               </div>
-              <div className="text-xs text-text-secondary">Complete</div>
+              <div className="text-gray-600 text-sm font-medium">Complete</div>
             </div>
           </div>
         </div>
       </div>
       
-      <div className="space-y-3">
+      <div className="space-y-4">
         {habits.slice(0, 3).map((habit) => {
           const stats = getHabitStats(habit.id);
           const isCompleted = stats.todayCount > 0;
           
           return (
-            <div key={habit.id} className="flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className={`w-3 h-3 rounded-full ${
-                  isCompleted ? 'bg-accent' : 'bg-gray-300'
-                }`} />
-                <span className="text-sm text-text-primary">{habit.name}</span>
+            <div key={habit.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+              <div className="flex items-center gap-3">
+                <div className={`w-4 h-4 rounded-full ${isCompleted ? 'bg-green-500' : 'bg-gray-300'}`} />
+                <span className="text-gray-900 font-medium">{habit.name}</span>
               </div>
-              <span className="text-xs text-text-secondary">
+              <span className={`text-sm font-semibold ${isCompleted ? 'text-green-600' : 'text-gray-500'}`}>
                 {isCompleted ? 'Done' : 'Pending'}
               </span>
             </div>
@@ -76,7 +76,7 @@ export const TodayProgress = () => {
         
         {habits.length > 3 && (
           <div className="text-center pt-2">
-            <span className="text-xs text-text-secondary">
+            <span className="text-gray-500 text-sm font-medium">
               +{habits.length - 3} more habits
             </span>
           </div>
@@ -84,9 +84,9 @@ export const TodayProgress = () => {
       </div>
       
       <div className="mt-6 pt-4 border-t border-gray-200">
-        <div className="flex items-center justify-center space-x-2 text-accent">
-          <Target className="w-4 h-4" />
-          <span className="text-sm font-medium">
+        <div className="flex items-center justify-center gap-2 text-green-600">
+          <Target className="w-5 h-5" />
+          <span className="font-semibold text-sm">
             Keep going! You're doing great 🎯
           </span>
         </div>

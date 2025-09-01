@@ -17,59 +17,59 @@ export const StatsCards = () => {
       value: `${todayStats.completedToday}/${todayStats.totalHabits}`,
       subtitle: `${Math.round(todayStats.completionRate)}% complete`,
       icon: Target,
-      color: 'text-primary',
-      bgColor: 'bg-primary/10'
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-100'
     },
     {
       title: 'Current Streak',
       value: totalStreak,
       subtitle: 'days strong',
       icon: Flame,
-      color: 'text-orange-500',
-      bgColor: 'bg-orange-500/10'
+      color: 'text-orange-600',
+      bgColor: 'bg-orange-100'
     },
     {
       title: 'Total Habits',
       value: habits.length,
       subtitle: 'active habits',
       icon: Trophy,
-      color: 'text-accent',
-      bgColor: 'bg-accent/10'
+      color: 'text-green-600',
+      bgColor: 'bg-green-100'
     },
     {
       title: 'Time Saved',
       value: '2.3h',
       subtitle: 'this week',
       icon: Clock,
-      color: 'text-purple-500',
-      bgColor: 'bg-purple-500/10'
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-100'
     }
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 gap-3 md:gap-4 lg:grid-cols-4">
       {stats.map((stat, index) => {
         const Icon = stat.icon;
         
         return (
           <div
             key={index}
-            className="bg-surface rounded-lg p-6 shadow-card hover:shadow-lg transition-shadow"
+            className="bg-white rounded-2xl p-4 md:p-5 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow"
           >
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-3">
+              <div className={`${stat.bgColor} ${stat.color} p-3 rounded-xl w-fit`}>
+                <Icon className="w-6 h-6" />
+              </div>
               <div>
-                <p className="text-text-secondary text-sm font-medium">
+                <p className="text-gray-600 text-sm font-medium mb-1">
                   {stat.title}
                 </p>
-                <p className="text-2xl font-bold text-text-primary mt-1">
+                <p className="text-2xl md:text-3xl font-bold text-gray-900 mb-1">
                   {stat.value}
                 </p>
-                <p className="text-text-secondary text-sm mt-1">
+                <p className="text-gray-500 text-sm">
                   {stat.subtitle}
                 </p>
-              </div>
-              <div className={`${stat.bgColor} ${stat.color} p-3 rounded-lg`}>
-                <Icon className="w-6 h-6" />
               </div>
             </div>
           </div>

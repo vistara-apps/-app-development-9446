@@ -8,32 +8,33 @@ export const ProgressChart = () => {
   const maxCount = Math.max(...weeklyData.map(d => d.count), 1);
 
   return (
-    <div className="bg-surface rounded-lg shadow-card p-6">
+    <div className="bg-white rounded-2xl shadow-lg p-5 md:p-6 border border-gray-100">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-xl font-semibold text-text-primary">Weekly Progress</h2>
-          <p className="text-text-secondary text-sm">Habit completions over the last 7 days</p>
+          <h2 className="text-xl md:text-2xl font-bold text-gray-900 mb-1">Weekly Progress</h2>
+          <p className="text-gray-600 text-sm">Habit completions over the last 7 days</p>
         </div>
-        <BarChart3 className="w-5 h-5 text-text-secondary" />
+        <div className="bg-blue-100 p-3 rounded-xl">
+          <BarChart3 className="w-6 h-6 text-blue-600" />
+        </div>
       </div>
       
-      <div className="flex items-end justify-between space-x-2 h-48">
+      <div className="flex items-end justify-between gap-2 h-48 md:h-52">
         {weeklyData.map((day, index) => (
           <div key={index} className="flex-1 flex flex-col items-center">
             <div className="flex-1 flex items-end w-full">
               <div
-                className="w-full bg-gradient-to-t from-primary to-accent rounded-t-md transition-all duration-300 hover:opacity-80"
+                className="w-full bg-gradient-to-t from-blue-500 to-blue-600 rounded-t-lg transition-all duration-300 hover:opacity-80 min-h-[4px]"
                 style={{
-                  height: `${(day.count / maxCount) * 100}%`,
-                  minHeight: day.count > 0 ? '8px' : '2px'
+                  height: `${Math.max((day.count / maxCount) * 100, 8)}%`
                 }}
               />
             </div>
-            <div className="mt-2 text-center">
-              <div className="text-sm font-semibold text-text-primary">
+            <div className="mt-3 text-center">
+              <div className="text-lg font-bold text-gray-900 mb-1">
                 {day.count}
               </div>
-              <div className="text-xs text-text-secondary">
+              <div className="text-gray-600 text-sm font-medium">
                 {day.date}
               </div>
             </div>
