@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Check, Clock, Settings } from 'lucide-react';
+import { Plus, Check, Clock, Settings, Target } from 'lucide-react';
 import { useWellness } from '../context/WellnessContext';
 import { format, isToday } from 'date-fns';
 
