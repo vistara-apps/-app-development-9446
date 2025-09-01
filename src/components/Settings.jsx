@@ -227,20 +227,7 @@ export const Settings = () => {
         </div>
       </div>
 
-      <div className="bg-gradient-to-r from-primary to-accent rounded-lg p-6 text-white">
-        <h3 className="font-semibold mb-2">Upgrade to Pro</h3>
-        <p className="text-sm opacity-90 mb-4">
-          Unlock advanced reminder customization, detailed analytics, and workflow integrations.
-        </p>
-        <div className="flex space-x-3">
-          <button className="bg-white text-primary px-4 py-2 rounded-lg text-sm font-semibold hover:bg-gray-50 transition-colors">
-            Start Free Trial
-          </button>
-          <button className="border border-white/30 px-4 py-2 rounded-lg text-sm hover:bg-white/10 transition-colors">
-            Learn More
-          </button>
-        </div>
-      </div>
+      {/* Freemium: upgrade removed for demo */}
     </div>
   );
 };
